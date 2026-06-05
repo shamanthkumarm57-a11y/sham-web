@@ -1,0 +1,74 @@
+.testimonials h2 {
+  max-width: 860px;
+}
+
+.testimonial-track {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(240px, 1fr));
+  gap: 12px;
+  margin-top: 40px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+@media (max-width: 900px) {
+  .testimonial-track {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    overflow-x: visible;
+  }
+}
+
+@media (max-width: 560px) {
+  .testimonial-track {
+    grid-template-columns: 1fr;
+    margin-top: 28px;
+  }
+
+  .testimonial-track article {
+    min-height: 220px;
+    padding: 20px;
+  }
+}
+
+.testimonial-track::-webkit-scrollbar {
+  display: none;
+}
+
+.testimonial-track article {
+  position: relative;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.48);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(225, 225, 225, 0.64)),
+    rgba(255, 255, 255, 0.78);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.76),
+    0 24px 70px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(16px);
+  color: #111111;
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.testimonial-track article:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.86),
+    0 34px 90px rgba(0, 0, 0, 0.3);
+}
+
+.testimonial-track p {
+  font-size: clamp(1.1rem, 1.5vw, 1.45rem);
+  line-height: 1.35;
+}
+
+.testimonial-track span {
+  color: #555555;
+  font-weight: 800;
+}

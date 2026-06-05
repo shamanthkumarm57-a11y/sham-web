@@ -1,0 +1,244 @@
+.home-banner {
+  position: relative;
+  flex: 1;
+  min-height: calc(100svh - 110px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: end;
+  padding: clamp(56px, 9vw, 120px) 78px 54px;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.home-banner::before {
+  content: '';
+  position: absolute;
+  left: 7%;
+  right: 7%;
+  top: 16%;
+  height: 42%;
+  z-index: -1;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  filter: blur(54px);
+  opacity: 0.48;
+  animation: bannerLight 9s ease-in-out infinite;
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 760px);
+  padding-bottom: 96px;
+  transform-style: preserve-3d;
+}
+
+.hero-copy h1 {
+  max-width: 720px;
+  overflow-wrap: break-word;
+}
+
+.hero-copy-detail {
+  max-width: 620px;
+  margin: 22px 0 0;
+  color: rgba(245, 245, 245, 0.76);
+  font-size: clamp(1rem, 1.4vw, 1.22rem);
+  line-height: 1.6;
+}
+
+.hero-actions {
+  position: absolute;
+  left: 78px;
+  bottom: 64px;
+  z-index: 3;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: min(720px, calc(100% - 156px));
+}
+
+.project-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+  min-width: 172px;
+  min-height: 60px;
+  padding: 0 22px;
+  border-radius: 8px;
+  color: #111111;
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  background: rgba(210, 210, 210, 0.74);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.65),
+    0 24px 60px rgba(0, 0, 0, 0.42);
+  backdrop-filter: blur(18px);
+  font-size: 1rem;
+  text-decoration: none;
+  transition:
+    background 180ms ease,
+    transform 180ms ease;
+}
+
+.secondary-action {
+  min-width: auto;
+  color: #f4f4f4;
+  background: rgba(18, 18, 18, 0.64);
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+.project-action:hover {
+  background: rgba(245, 245, 245, 0.9);
+  transform: translateY(-2px);
+}
+
+.secondary-action:hover {
+  color: #111111;
+}
+
+.project-action span {
+  width: 22px;
+  height: 22px;
+  background-image: radial-gradient(circle, currentColor 1.6px, transparent 2px);
+  background-size: 7px 7px;
+}
+
+@supports (animation-timeline: view()) {
+  .hero-copy {
+    animation: heroDepth linear both;
+    animation-timeline: view();
+    animation-range: exit 0% exit 90%;
+  }
+
+  .stage {
+    animation: stageParallax linear both;
+    animation-timeline: view();
+    animation-range: exit 0% exit 90%;
+  }
+}
+
+@keyframes bannerLight {
+  0%,
+  100% {
+    transform: translateX(-8%) scaleX(0.82);
+  }
+  50% {
+    transform: translateX(8%) scaleX(1);
+  }
+}
+
+@keyframes heroDepth {
+  to {
+    opacity: 0.24;
+    transform: translateY(80px) scale(0.96);
+  }
+}
+
+@keyframes stageParallax {
+  to {
+    opacity: 0.18;
+    transform: translateY(-130px) scale(0.9);
+  }
+}
+
+@media (max-width: 1100px) {
+  .home-banner {
+    min-height: 780px;
+    padding: 130px 28px 42px;
+    align-items: start;
+    gap: 30px;
+  }
+
+  .hero-copy {
+    width: min(100%, 620px);
+    padding-bottom: 0;
+  }
+
+  .hero-actions {
+    left: 28px;
+    bottom: 38px;
+    width: min(620px, calc(100% - 56px));
+  }
+}
+
+@media (max-width: 760px) {
+  .home-banner {
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 116px 18px 34px;
+    gap: 22px;
+  }
+
+  .hero-copy {
+    width: 100%;
+    order: 1;
+    padding: 0 0 0;
+  }
+
+  .hero-copy h1 {
+    max-width: 100%;
+    font-size: clamp(2.7rem, 10vw, 3.9rem);
+    line-height: 1.02;
+  }
+
+  .hero-copy-detail {
+    max-width: 100%;
+    margin-top: 18px;
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+
+  .hero-actions {
+    position: relative;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    order: 3;
+    width: 100%;
+    margin-top: 4px;
+    padding: 0 8px;
+    justify-content: center;
+  }
+
+  .project-action {
+    min-width: calc(50% - 6px);
+  }
+}
+
+@media (max-width: 460px) {
+  .home-banner {
+    padding-top: 102px;
+    gap: 18px;
+    padding-inline: 14px;
+  }
+
+  .hero-copy h1 {
+    max-width: 100%;
+    font-size: clamp(2.28rem, 10.2vw, 3rem);
+  }
+
+  .hero-copy-detail {
+    max-width: 100%;
+    margin-top: 16px;
+  }
+
+  .hero-actions {
+    padding: 0 4px;
+    gap: 10px;
+  }
+
+  .project-action {
+    width: 100%;
+    min-width: 0;
+    min-height: 56px;
+    padding-inline: 20px;
+  }
+}
+
+@media (max-width: 360px) {
+  .hero-copy h1 {
+    font-size: 2.18rem;
+  }
+}

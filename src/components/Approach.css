@@ -1,0 +1,167 @@
+.approach {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(320px, 1.08fr);
+  gap: 48px;
+  align-items: center;
+}
+
+.approach > * {
+  min-width: 0;
+}
+
+.approach h2 {
+  max-width: 820px;
+}
+
+.section-copy {
+  max-width: 760px;
+  color: #a8a8a8;
+  font-size: clamp(1rem, 1.3vw, 1.18rem);
+  line-height: 1.65;
+}
+
+.highlight-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 28px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.highlight-list li {
+  padding: 9px 11px;
+  border-radius: 999px;
+  color: #d8d8d8;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.9rem;
+}
+
+.approach-visual {
+  position: relative;
+  width: 100%;
+  max-width: 780px;
+  min-height: 520px;
+  justify-self: end;
+  border-radius: 8px;
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.12), transparent 42%),
+    rgba(20, 20, 20, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 28px 90px rgba(0, 0, 0, 0.34);
+  backdrop-filter: blur(18px);
+}
+
+.approach-visual::before {
+  content: '';
+  position: absolute;
+  inset: -40%;
+  background: conic-gradient(from 90deg, transparent, rgba(255, 255, 255, 0.16), transparent 34%);
+  animation: rotateGlass 12s linear infinite;
+}
+
+.visual-card {
+  position: absolute;
+  display: block;
+  border-radius: 8px;
+  background-color: #d8d8d8;
+  background-position: center;
+  background-size: cover;
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.4);
+  animation: cardFloat 7s ease-in-out infinite;
+}
+
+.card-one {
+  width: 42%;
+  aspect-ratio: 0.72;
+  left: 12%;
+  top: 12%;
+  background-image: url('/assets/visual-ui.svg');
+  transform: rotate(-8deg);
+}
+
+.card-two {
+  width: 38%;
+  aspect-ratio: 0.78;
+  right: 12%;
+  top: 22%;
+  background-image: url('/assets/visual-code.svg');
+  transform: rotate(9deg);
+  animation-delay: -1.4s;
+}
+
+.card-three {
+  width: 46%;
+  aspect-ratio: 1.2;
+  left: 28%;
+  bottom: 8%;
+  background-image: url('/assets/visual-motion.svg');
+  transform: rotate(-2deg);
+  animation-delay: -2.8s;
+}
+
+.card-four {
+  width: 22%;
+  aspect-ratio: 1;
+  right: 26%;
+  bottom: 20%;
+  background:
+    radial-gradient(circle at 35% 28%, #ffffff, transparent 34%),
+    linear-gradient(135deg, #737a80, #1b1d20);
+  border-radius: 50%;
+  animation-delay: -4.2s;
+}
+
+@keyframes rotateGlass {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes cardFloat {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -14px;
+  }
+}
+
+@media (max-width: 1180px) {
+  .approach {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .approach-visual {
+    max-width: none;
+    min-height: 420px;
+    justify-self: stretch;
+  }
+}
+
+@media (max-width: 640px) {
+  .approach-visual {
+    min-height: 320px;
+  }
+
+  .card-one {
+    width: 48%;
+    left: 8%;
+  }
+
+  .card-two {
+    width: 42%;
+    right: 8%;
+  }
+
+  .card-three {
+    width: 52%;
+    left: 24%;
+  }
+}

@@ -1,0 +1,123 @@
+.app-shell {
+  position: relative;
+  min-height: 100svh;
+  color: var(--text);
+  background: #050505;
+  overflow: clip;
+}
+
+.app-shell::before {
+  content: '';
+  position: fixed;
+  inset: -20%;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle, rgba(255, 255, 255, 0.95) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255, 255, 255, 0.7) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255, 255, 255, 0.38) 1px, transparent 1px);
+  background-size:
+    18px 18px,
+    32px 32px,
+    72px 72px;
+  background-position:
+    0 0,
+    12px 22px,
+    26px 14px;
+  opacity: 0.16;
+  filter: blur(0.5px);
+  animation: starDrift 34s linear infinite;
+}
+
+@keyframes starDrift {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-30px, 20px, 0);
+  }
+}
+
+.app-shell > * {
+  position: relative;
+  z-index: 1;
+}
+
+.section-shell {
+  width: min(1880px, calc(100% - 36px));
+  margin: 0 auto;
+  padding: clamp(72px, 8vw, 96px) clamp(28px, 4.2vw, 78px);
+  scroll-margin-top: 120px;
+  overflow: hidden;
+}
+
+.section-title {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 28px;
+  margin-bottom: 36px;
+  min-width: 0;
+}
+
+.section-title h2 {
+  max-width: 780px;
+}
+
+.section-link {
+  color: #ededed;
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+}
+
+@keyframes ambientGlass {
+  from {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  to {
+    transform: translate3d(-46px, -46px, 0) rotate(1deg);
+  }
+}
+
+.workspace {
+  width: min(1880px, calc(100% - 36px));
+  min-height: 100svh;
+  margin: 0 auto;
+  padding: 18px 0 28px;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 760px) {
+  .workspace {
+    width: min(100% - 24px, 680px);
+    min-height: auto;
+    padding-bottom: 48px;
+  }
+
+  .section-shell {
+    width: min(100% - 24px, 680px);
+    padding: 58px 0;
+    scroll-margin-top: 96px;
+  }
+
+  .section-title {
+    display: block;
+  }
+
+  .section-link {
+    display: inline-flex;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 420px) {
+  .workspace,
+  .section-shell {
+    width: min(100% - 18px, 680px);
+  }
+
+  .section-shell {
+    padding-block: 50px;
+  }
+}
