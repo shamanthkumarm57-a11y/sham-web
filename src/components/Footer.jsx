@@ -14,7 +14,7 @@ function Footer() {
           Looking for a Frontend Developer for your next website or web application?
           Let&apos;s build modern, responsive, and high-performing digital experiences.
         </p>
-        <a href="mailto:hello@shamanth.dev">Contact Shamanth</a>
+        <a href="mailto:shamanthm727@gmail.com">Contact Shamanth</a>
       </div>
       <div className="footer-directory">
         {footerGroups.map(([title, links]) => (
